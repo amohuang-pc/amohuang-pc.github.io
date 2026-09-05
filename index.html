@@ -42,7 +42,6 @@
     border-radius: 2px;
   }
 
-  /* Ledger-style header */
   .masthead {
     display: flex;
     justify-content: space-between;
@@ -50,9 +49,6 @@
     gap: 1rem;
     padding-bottom: 0.6rem;
     border-bottom: 3px double var(--ink);
-  }
-  .masthead .name { font-weight: 600; font-size: 1.05rem; }
-  .masthead .place {
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 0.8rem;
     color: var(--muted);
@@ -80,13 +76,18 @@
     .portrait { order: 2; width: 100%; }
   }
   .hero h1 {
-    font-size: clamp(2rem, 5.5vw, 3rem);
-    font-weight: 500;
-    line-height: 1.18;
+    font-size: clamp(2.4rem, 6.5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.1;
     letter-spacing: -0.01em;
-    max-width: 20ch;
   }
-  .hero h1 em { font-style: italic; font-weight: 500; }
+  .hero .tagline {
+    margin-top: 1.1rem;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    font-style: italic;
+    max-width: 28ch;
+  }
   .hero .links {
     margin-top: 1.5rem;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -94,41 +95,25 @@
   }
   .hero .links a { margin-right: 1.4rem; }
 
-  /* Sections with margin tabs, like a working paper */
   section {
     border-top: 1px solid var(--rule);
-    padding: 2rem 0;
+    padding: 2.25rem 0;
   }
-  .tab {
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    margin-bottom: 1rem;
+  section > h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
   }
   section p + p { margin-top: 1rem; }
 
-  @media (min-width: 780px) {
-    section {
-      display: grid;
-      grid-template-columns: 9rem 1fr;
-      column-gap: 2.5rem;
-    }
-    .tab {
-      text-align: right;
-      padding-top: 0.3rem;
-      margin-bottom: 0;
-    }
-  }
-
-  /* Work entries */
   .entry + .entry {
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid var(--rule);
   }
-  .entry h2 {
-    font-size: 1.35rem;
+  .entry h3 {
+    font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.3;
   }
@@ -138,15 +123,44 @@
     color: var(--muted);
     margin: 0.25rem 0 0.85rem;
   }
+  .entry h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.1rem 0 0.35rem;
+  }
+  .entry ul {
+    padding-left: 1.15rem;
+    margin: 0.35rem 0 0;
+  }
+  .entry li { margin: 0.35rem 0; }
   .entry .link-line {
     margin-top: 0.85rem;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 0.9rem;
   }
 
-  .toolbox {
-    font-size: 1rem;
-    color: var(--ink);
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+  .chips li {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .edu-line { margin: 0.4rem 0; }
+  .edu-line .years {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-left: 0.5rem;
   }
 
   footer {
@@ -162,14 +176,15 @@
 <div class="page">
 
   <div class="masthead">
-    <span class="name">Amos (Pei-Ci) Huang</span>
-    <span class="place">Seattle, WA</span>
+    <span>MSIS 2027, UW Foster School of Business</span>
+    <span>Seattle, WA</span>
   </div>
 
   <header class="hero">
     <img class="portrait" src="profile.jpg" alt="Portrait of Amos Huang" width="600" height="750">
     <div class="hero-text">
-      <h1>Decision support that keeps human judgment <em>in the loop</em>, and on the record.</h1>
+      <h1>Amos (Pei-Ci) Huang</h1>
+      <p class="tagline">I build decision support that keeps human judgment in the loop, and on the record.</p>
       <p class="links">
         <a href="https://github.com/amohuang-pc">GitHub</a>
         <a href="https://www.linkedin.com/in/amohuang/">LinkedIn</a>
@@ -179,43 +194,96 @@
   </header>
 
   <section id="about">
-    <div class="tab">About</div>
-    <div>
-      <p>Before Foster, I spent close to four years in transfer pricing, first at Deloitte Taiwan and then in independent practice. The work was classification under scrutiny. For every study I had to decide which companies count as comparable under the arm's length principle, write down the reason for each call, and be ready to defend it in a tax audit years later.</p>
-      <p>I came to the MSIS program at the University of Washington to add the technical side: machine learning, experimentation, and systems design. What carries over from tax is a habit of documented judgment, and a preference for tools that support decisions rather than replace them. I am also exploring a community platform for cross-domain exchange, because moving between fields is how I learn best.</p>
-    </div>
+    <h2>About Me</h2>
+    <p>Before Foster, I spent close to four years in transfer pricing, first at Deloitte Taiwan and then in independent practice. The work was classification under scrutiny. For every study I had to decide which companies count as comparable under the arm's length principle, write down the reason for each call, and be ready to defend it in a tax audit years later.</p>
+    <p>I came to the MSIS program at the University of Washington to add the technical side: machine learning, experimentation, and systems design. What carries over from tax is a habit of documented judgment, and a preference for tools that support decisions rather than replace them. I am also exploring a community platform for cross-domain exchange, because moving between fields is how I learn best.</p>
   </section>
 
-  <section id="work">
-    <div class="tab">Work</div>
-    <div>
-      <article class="entry">
-        <h2>Steel price forecasting</h2>
-        <p class="meta">Side project, 2025 to present</p>
-        <p>In consulting meetings I watched steel executives price large orders from experience and memory. Nobody asked for a model, so I built one: an XGBoost forecaster for daily steel prices, with walk-forward validation, naive and seasonal-naive baselines, and SHAP explanations for every prediction. The point is not to replace veteran judgment. It is to give that judgment something to check against, and to make the model show its work the way I had to show mine in an audit file.</p>
-        <p class="link-line"><a href="https://github.com/amohuang-pc/steel-price-forecast">Code and results on GitHub</a></p>
-      </article>
-      <article class="entry">
-        <h2>Comparables benchmarking for transfer pricing</h2>
-        <p class="meta">Professional work, Deloitte Taiwan and independent practice</p>
-        <p>For each transfer pricing study I screened hundreds of candidate companies: read their business descriptions and financials, accepted or rejected each one against a documented rubric, and recorded a rationale for every decision. The results had to be consistent across analysts and hold up under tax authority review years later. Client work cannot be shared, but the craft is portable: turning messy corporate disclosures into consistent, reviewable classification decisions.</p>
-      </article>
-    </div>
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="chips">
+      <li>Python</li>
+      <li>pandas</li>
+      <li>scikit-learn</li>
+      <li>XGBoost</li>
+      <li>LightGBM</li>
+      <li>CatBoost</li>
+      <li>SHAP</li>
+      <li>SQL</li>
+      <li>R</li>
+      <li>Excel VBA</li>
+      <li>Time-series forecasting</li>
+      <li>Comparables benchmarking</li>
+      <li>Transfer pricing</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <article class="entry">
+      <h3>Independent Consultant, Tax and Business Models</h3>
+      <p class="meta">Freelance, remote. Apr 2025 to Jul 2026</p>
+      <h4>Engagement risk assessment</h4>
+      <ul>
+        <li>Ran pre-engagement risk reviews before accepting each case, screening regulatory exposure, data availability, and scope so that problem cases were declined or repriced early.</li>
+        <li>Conducted jurisdiction-specific regulatory research so lean teams could build audit-ready data frameworks that scale.</li>
+      </ul>
+      <h4>Data analysis and reporting</h4>
+      <ul>
+        <li>Built high-transparency dashboards to monitor business health and operational performance for small-business clients, supporting data-driven growth decisions.</li>
+        <li>Mapped transaction flows to surface operational bottlenecks and designed data-driven fixes that improved process efficiency.</li>
+        <li>Consolidated local compliance and reporting requirements, cutting administrative workload and improving record consistency across systems.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <h3>Senior Specialist, Deloitte</h3>
+      <p class="meta">Kaohsiung, Taiwan. Feb 2023 to Apr 2025</p>
+      <h4>Benchmarking and comparables</h4>
+      <ul>
+        <li>Screened hundreds of candidate companies per study against the arm's length standard: read business descriptions and financials, accepted or rejected each company under a documented rubric, and recorded a rationale for every call.</li>
+        <li>Benchmarked intercompany margins under TNMM and CUP; refined comparable sets and median benchmarks, reducing exposed transfer pricing risk by 9 to 15 percent across mid- and large-cap multinational clients.</li>
+      </ul>
+      <h4>Audit defense and documentation</h4>
+      <ul>
+        <li>Achieved zero tax authority adjustments on supported enquiries through tighter source logging and definition alignment; decisions had to stay consistent across analysts and hold up under review years later.</li>
+        <li>Integrated multi-entity data across systems to speed up executive sign-off on pricing decisions.</li>
+      </ul>
+      <h4>Engagement risk and data governance</h4>
+      <ul>
+        <li>Executed risk-assessment and data governance protocols during project onboarding, analyzing corporate data to evaluate regulatory compliance and flag independence risks.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <article class="entry">
+      <h3>Steel price forecasting</h3>
+      <p class="meta">Side project, 2025 to present</p>
+      <p>In consulting meetings I watched steel executives price large orders from experience and memory. Nobody asked for a model, so I built one: a daily steel price forecaster comparing gradient boosting models (XGBoost, LightGBM, CatBoost) against naive and seasonal-naive baselines, with walk-forward validation over held-out months, direction accuracy alongside error metrics, and SHAP explanations for every prediction. The point is not to replace veteran judgment. It is to give that judgment something to check against, and to make the model show its work the way I had to show mine in an audit file.</p>
+      <p class="link-line"><a href="https://github.com/amohuang-pc/steel-price-forecast">Code and results on GitHub</a></p>
+    </article>
+    <article class="entry">
+      <h3>Dataset citation detection</h3>
+      <p class="meta">Kaggle competition, Make Data Count, 2025</p>
+      <p>A pipeline that finds dataset references in scientific papers and labels each as a primary or secondary citation. Text extraction handles messy PDF and XML with layered fallbacks (lxml, pdfminer, pypdf). Identifier matching covers DOI plus accession schemes such as GEO, SRA, ENA, ArrayExpress, and BioProject, with deliberately conservative rules: PDB codes, for example, only count when the surrounding text actually mentions the Protein Data Bank, trading recall for precision. Each hit is then classified from its context window using linguistic cues that separate data the authors generated from data they reused.</p>
+    </article>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p class="edu-line">University of Washington, M.S. Information Systems<span class="years">2026 to 2027, expected</span></p>
+    <p class="edu-line">Soochow University, B.A. Economics, Taipei<span class="years">2018 to 2022</span></p>
   </section>
 
   <section id="now">
-    <div class="tab">Now</div>
-    <div>
-      <p>Rebuilding the steel forecaster into a public repository, and looking for research work on how humans and AI systems make decisions together.</p>
-      <p class="toolbox" style="margin-top:1rem;">Toolbox: Python (pandas, scikit-learn, XGBoost, SHAP), SQL, Excel modeling at audit grade, Git.</p>
-    </div>
+    <h2>Now</h2>
+    <p>Rebuilding the steel forecaster into a public repository, and looking for research work on how humans and AI systems make decisions together.</p>
   </section>
 
   <section id="contact">
-    <div class="tab">Contact</div>
-    <div>
-      <p><a href="mailto:phuang29@uw.edu">phuang29@uw.edu</a></p>
-    </div>
+    <h2>Contact</h2>
+    <p><a href="mailto:phuang29@uw.edu">phuang29@uw.edu</a></p>
   </section>
 
   <footer>© 2026 Amos (Pei-Ci) Huang. Plain HTML, no framework.</footer>
